@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bits/stdc++.h>
+#include <algorithm>
 #include <sstream>
 using namespace std;
 
@@ -8,7 +9,7 @@ struct Date {
 
   Date(int d, int m, int y) : day(d), month(m), year(y) {}
 
-  bool isValidDate() const {
+  bool isValidDate() {
     if (year < 0)
       return false;
     if (month < 0 || month > 11)
@@ -32,7 +33,7 @@ struct Date {
   //   cout << day << " " << months[month] << ", " << year << endl;
   // }
 
-  string printDate() const {
+  string printDate() {
     static const string months[] = {
         "January", "February", "March", "April", "May", "June", "July",
         "August", "September", "October", "November", "December"
@@ -50,7 +51,7 @@ struct Date {
     return day < other.day;
   }
 
-  int daysInMonth(int month, int year) const {
+  int daysInMonth(int month, int year) {
     switch (month) {
       case 0: 
       case 2: 
@@ -75,7 +76,7 @@ struct Date {
     return (y % 4 == 0 && y % 100 != 0) || (y % 400 == 0);
   }
 
-  int getDayOfWeek() const {
+  int getDayOfWeek() {
     int d = day, m = month, y = year;
     if (m < 3) {
       m += 12;
@@ -113,6 +114,8 @@ int main() {
   Date d2(26, 7, 2024);
   Date d3(29, 1, 2024);
   Date d4(12, 6, 2012);
+
+  d2.newDate(25, 7, 2024);
 
   cout << d2.printDate() << " is " << daysOfWeek[d2.getDayOfWeek() - 2] << endl;
   cout << d1.calculateDifference(d2) << " days between " << d1.printDate() << " and " << d2.printDate() << endl;
