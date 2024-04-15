@@ -34,6 +34,7 @@ struct Date {
   // }
 
   string printDate() {
+    // used static to run it faster. It is not going to be initialized each time
     static const string months[] = {
         "January", "February", "March", "April", "May", "June", "July",
         "August", "September", "October", "November", "December"
@@ -43,6 +44,7 @@ struct Date {
     return ss.str();
   }
 
+  // The first const before Date& other indicates that the other parameter is passed as a reference to a constant and will not be changed inside the method. The second const used after the parentheses indicates that this method does not change the state of the current Date object for which it is called
   bool operator<(const Date& other) const {
     if (year != other.year)
       return year < other.year;
